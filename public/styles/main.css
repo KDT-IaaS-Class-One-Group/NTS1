@@ -1,0 +1,23 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+#root{
+  display: flex;
+  width:100vw;
+  height:100vh;
+  flex-direction: column;
+}
+#header{
+  width:100vw;
+  height:20vh;
+}
+#main{
+  width:100vw;
+  height:70vh;
+}
+#footer{
+  width:100vw;
+  height:10vh;
+}
