@@ -10,9 +10,20 @@
 <body>
   <div id="root">
     <div class="header" id="header"></div>
-    <div id="main"></div>
+    <div id="main">
+      <!-- 슬라이드 기능 -->
+      <div class="slider">
+        <div class="slide slide1 active"></div>
+        <div class="slide slide2"></div>
+        <div class="slide slide3"></div>
+        <button class="prev">◀</button>
+        <button class="next">▶</button>
+      </div>
+    </div>
     <div id="footer"></div>
   </div>
+  <!-- 원인 발견 src가 먼저 실행되기 때문에 충돌 발생 -->
+  <script src="/scripts/main.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 </html>
