@@ -69,8 +69,10 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
   const body = document.body;
   const toggleButton = document.getElementById('darktoggleButton');
+  const titleBox = document.getElementById('titleBox');
 
   toggleButton.addEventListener('click', function() {
     body.classList.toggle('dark-mode');
+    titleBox.style.backgroundColor = body.classList.contains('dark-mode') ? '#394734' : '#568444';
   });
 });
