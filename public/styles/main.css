@@ -62,6 +62,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  text-align: center;
+  line-height: 50vh;
+  font-size: 2rem;
 }
 
 .slide.active {
