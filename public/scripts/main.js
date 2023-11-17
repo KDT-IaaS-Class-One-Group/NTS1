@@ -64,3 +64,13 @@ document.addEventListener("DOMContentLoaded", function() {
   let mainElement = document.getElementById("header");
   mainElement.appendChild(newContent);
 });
+
+// 다크모드 토글버튼 이벤트 추가
+document.addEventListener('DOMContentLoaded', function() {
+  const body = document.body;
+  const toggleButton = document.getElementById('darktoggleButton');
+
+  toggleButton.addEventListener('click', function() {
+    body.classList.toggle('dark-mode');
+  });
+});
