@@ -52,8 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // #main 요소에 추가할 새로운 div 요소 생성
   let newContent = document.createElement("div");
-  newContent.innerHTML = `<span class="menuIcon" onclick="teamToggle()">&#9776;</span>
-  <div class="navbar" id="myNavbar">
+  newContent.innerHTML = `<div class="navbar" id="myNavbar">
     <span class="menuIcon" onclick="teamToggle()">&#9776;</span>
     <a href="#home">Home</a>
     <a href="#about">About</a>
