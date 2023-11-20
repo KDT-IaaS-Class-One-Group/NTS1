@@ -1,19 +1,20 @@
 const express = require('express');
-const path = require('path')
+const path = require('path');
 const app = express();
-const mysql = require('mysql2')
-const port = 8080 ;
+const mysql = require('mysql2');
+const port = 8080;
 const bodyParser = require('body-parser');
 
 app.use(express.static(path.join(__dirname, './public')));
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // 본인의 MariaDB 계정 정보로 수정
-  password: '723546', // 본인의 MariaDB 계정 정보로 수정
+  host: '192.168.100.134',
+  user: 'nts96',
+  password: '1234',
   database: 'nts',
   port: 3307,
+  connectionLimit: 6,
 });
 
 connection.connect((err) => {
@@ -21,6 +22,7 @@ connection.connect((err) => {
     console.error('MariaDB 연결 오류:', err);
   } else {
     console.log('MariaDB 연결 성공');
+    createTable(); // 테이블 생성 함수 호출
   }
 });
 
@@ -45,33 +47,89 @@ function createTable() {
   });
 }
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './public', 'index.html'));
+app.post('/signup/checkDuplicateId', async (req, res) => {
+  const userId = req.body.userId;
+
+  // ID 중복 검사를 위한 SQL 쿼리
+  const duplicateCheckQuery = 'SELECT COUNT(*) AS count FROM user WHERE userId = ?';
+
+  try {
+    // ID 중복 검사
+    const duplicateCheckResult = await new Promise((resolve, reject) => {
+      connection.query(duplicateCheckQuery, [userId], (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    const duplicateCount = duplicateCheckResult[0].count;
+
+    if (duplicateCount > 0) {
+      // 이미 존재하는 ID일 경우
+      return res.status(400).send('이미 존재하는 ID입니다.');
+    } else {
+      // 존재하지 않는 ID일 경우
+      return res.status(200).send('사용 가능한 ID입니다.');
+    }
+  } catch (error) {
+    console.error('데이터베이스 오류:', error);
+    res.status(500).send('ID 중복 검사 중 오류가 발생했습니다.');
+  }
 });
 
-app.post('/signup', (req, res) => {
+app.post('/signup', async (req, res) => {
   // 클라이언트에서 전송된 회원가입 데이터
   const userData = req.body;
 
-  // MariaDB에 데이터 삽입
-  const insertQuery = 'INSERT INTO user (userId, password, email, name, residentNumber) VALUES (?, ?, ?, ?, ?)';
-  const values = [
-    userData.userId,
-    userData.password,
-    userData.email,
-    userData.name,
-    userData.residentNumber
-  ];
+  // ID 중복 검사를 위한 SQL 쿼리
+  const duplicateCheckQuery = 'SELECT COUNT(*) AS count FROM user WHERE userId = ?';
 
-  connection.query(insertQuery, values, (err, results) => {
-    if (err) {
-      console.error('데이터베이스 오류:', err);
-      res.status(500).send('회원가입 중 오류가 발생했습니다.');
-    } else {
-      console.log('데이터베이스에 회원가입 데이터 저장 완료');
-      res.send('회원가입이 완료되었습니다.');
+  try {
+    // ID 중복 검사
+    const duplicateCheckResult = await new Promise((resolve, reject) => {
+      connection.query(duplicateCheckQuery, [userData.userId], (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    const duplicateCount = duplicateCheckResult[0].count;
+
+    if (duplicateCount > 0) {
+      // 이미 존재하는 ID일 경우
+      return res.status(400).send('이미 존재하는 ID입니다.');
     }
-  });
+
+    // 존재하지 않는 ID일 경우 회원가입 처리
+    const insertQuery = 'INSERT INTO user (userId, password, email, name, residentNumber) VALUES (?, ?, ?, ?, ?)';
+    const insertValues = [
+      userData.userId,
+      userData.password,
+      userData.email,
+      userData.name,
+      userData.residentNumber
+    ];
+
+    // 회원가입 데이터 삽입
+    connection.query(insertQuery, insertValues, (err, results) => {
+      if (err) {
+        console.error('데이터베이스 오류:', err);
+        res.status(500).send('회원가입 중 오류가 발생했습니다.');
+      } else {
+        console.log('데이터베이스에 회원가입 데이터 저장 완료');
+        res.status(200).send('회원가입이 완료되었습니다.');
+      }
+    });
+  } catch (error) {
+    console.error('데이터베이스 오류:', error);
+    res.status(500).send('회원가입 중 오류가 발생했습니다.');
+  }
 });
 
 app.post('/login', (req, res) => {
@@ -95,8 +153,6 @@ app.post('/login', (req, res) => {
     }
   });
 });
-
-
 
 app.listen(port, () => {
   console.log(`서버가 http://localhost:${port} 에서 실행 중입니다.`);
