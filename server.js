@@ -74,6 +74,28 @@ app.post('/signup', (req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  const userId = req.body.userId;
+  const password = req.body.password;
+
+  // 데이터베이스에서 사용자 정보 조회
+  const query = 'SELECT * FROM user WHERE userId = ? AND password = ?';
+  connection.query(query, [userId, password], (error, results) => {
+    if (error) {
+      console.error('로그인 에러:', error);
+      res.status(500).send('로그인 중 에러가 발생했습니다.');
+    } else {
+      if (results.length > 0) {
+        // 로그인 성공
+        res.status(200).send('로그인 성공');
+      } else {
+        // 로그인 실패
+        res.status(401).send('아이디 또는 비밀번호가 올바르지 않습니다.');
+      }
+    }
+  });
+});
+
 
 
 app.listen(port, () => {

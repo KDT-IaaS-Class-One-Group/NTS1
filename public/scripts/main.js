@@ -88,13 +88,30 @@ function login() {
   const userId = document.getElementById("userId").value;
   const password = document.getElementById("password").value;
 
-  // 여기에서 로그인 로직을 처리할 수 있습니다.
-  // 성공 시 ID 출력 창을 갱신하고 로그인 및 회원가입 버튼 상태를 변경합니다.
-  document.getElementById("loggedInUserId").innerText = userId + "님 반갑습니다!";
-  document.getElementById("loggedInUserId").style.display = "block";
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("logoutBtn").style.display = "block";
-  document.getElementById("signupBtn").style.display = "none";
+  // fetch를 사용하여 서버에 로그인 데이터 전송
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ userId, password })
+  })
+    .then(response => {
+      if (response.ok) {
+        // 로그인 성공
+        document.getElementById("loggedInUserId").innerText = userId + "님 반갑습니다!";
+        document.getElementById("loggedInUserId").style.display = "block";
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("logoutBtn").style.display = "block";
+        document.getElementById("signupBtn").style.display = "none";
+      } else {
+        // 로그인 실패
+        console.error('로그인 실패:', response.statusText);
+      }
+    })
+    .catch(error => {
+      console.error('데이터 전송 중 오류 발생:', error);
+    });
 }
 
 // 로그아웃 함수
