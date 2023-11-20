@@ -16,6 +16,21 @@
       <span class="menuIcon" onclick="teamToggle()" style="position: absolute; top: 0px; left: 2px;">&#9776;</span>
       <div id="titleBox">NTS</div>
       <button id="darktoggleButton">DARK MODE</button>
+
+      <!-- 로그인 폼 -->
+      <form id="loginForm">
+        <label for="userId">ID:</label>
+        <input type="text" id="userId" name="userId" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button id="loginBtn" type="button" onclick="login()">LOGIN</button>
+      </form>
+      <!-- 회원가입 버튼 -->
+      <button id="signupBtn" onclick="location.href='signUp.html'">회원가입</button>
+      <!-- 로그아웃 버튼 -->
+      <button style="display: none;" id="logoutBtn" onclick="logout()">로그아웃</button>
+      <!-- ID 출력 창 -->
+      <div id="loggedInUserId" style="display: none;"></div>
     </div>
 
     <div id="main">
