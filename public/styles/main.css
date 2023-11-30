@@ -48,60 +48,6 @@
   height: 10vh;
 }
 
-.slider {
-  width: 50vw;
-  height: 50vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  line-height: 50vh;
-  font-size: 2rem;
-}
-
-.slide.active {
-  display: block;
-}
-
-.slide1 {
-  background-color: pink;
-}
-
-.slide2 {
-  background-color: green;
-}
-
-.slide3 {
-  background-color: skyblue;
-}
-
-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 18px;
-  /* 마우스 커서의 모양 지정 스타일 */
-  cursor: pointer;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -144,6 +90,18 @@ body {
   color: black;
 }
 
+/* line-height 50 -> 4로 변경 */
+.slide {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  line-height: 4vh;
+  font-size: 2rem;
+}
 
 .slider {
   width: 50vw;
@@ -152,25 +110,30 @@ body {
   position: relative;
 }
 
-.slide {
-  width: 100%;
-  height: 100%;
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
+/* display block -> flex로 변경 */
+/* flex-set 추가 */
 .slide.active {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .slide1 {
   background-color: pink;
 }
 
+/* font-size 지정, text-align left로 따로 지정 */
 .slide2 {
   background-color: green;
+  font-size: 23px;
+  font-weight: 400;
+  text-align: left;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .slide3 {
