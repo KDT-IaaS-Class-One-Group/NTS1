@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -49,8 +50,8 @@
 }
 
 .slider {
-  width: 50vw;
-  height: 50vh;
+  width: 70vw;
+  height: 60vh;
   overflow: hidden;
   position: relative;
 }
@@ -58,17 +59,27 @@
 .slide {
   width: 100%;
   height: 100%;
-  display: none;
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
   text-align: center;
-  line-height: 50vh;
+  line-height: 60vh;
   font-size: 2rem;
+  transition: opacity 0.5s ease-in-out, left 0.5s ease-in-out;
 }
 
 .slide.active {
-  display: block;
+  opacity: 1;
+  left: 0; /* 활성 슬라이드는 왼쪽에 위치하도록 설정합니다. */
+}
+
+.slide.next {
+  left: 100%; /* 다음 슬라이드는 오른쪽에 위치하도록 설정합니다. */
+}
+
+.slide.previous {
+  left: -100%; /* 이전 슬라이드는 왼쪽에 위치하도록 설정합니다. */
 }
 
 .slide1 {
@@ -76,7 +87,37 @@
 }
 
 .slide2 {
-  background-color: green;
+  background-color: gray;
+  display:flex;
+}
+
+.slide2>div:nth-child(1)
+{
+  width:30%;
+  height:100%;
+}
+.slide2>div:nth-child(1)>img{
+  width: 100%;
+  height: 100%;
+}
+.slide2>div:nth-child(2)
+{
+  display:flex;
+  flex-direction: column;
+  width:70%;
+  height:100%;
+  font-size: 2vw;
+  align-items: center;
+  text-align: center;
+}
+.slide2>div:nth-child(2)>p{
+  height:20%;
+  width:100%;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .slide3 {
@@ -144,57 +185,6 @@ body {
   color: black;
 }
 
-
-.slider {
-  width: 50vw;
-  height: 50vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.slide.active {
-  display: block;
-}
-
-.slide1 {
-  background-color: pink;
-}
-
-.slide2 {
-  background-color: green;
-}
-
-.slide3 {
-  background-color: skyblue;
-}
-
-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 18px;
-  /* 마우스 커서의 모양 지정 스타일 */
-  cursor: pointer;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
 
 #darktoggleButton {
   position: absolute;

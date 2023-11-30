@@ -3,21 +3,30 @@ let currentSlide = 1;
 
 function showSlide(number) {
   const slides = document.querySelectorAll(".slide");
-  // 첫번째 슬라이드를 보여주기 위한 조건식
   if (number > slides.length) {
     currentSlide = 1;
   }
-  // 마지막 슬라이드를 보여주기 위한 조건식
   if (number < 1) {
     currentSlide = slides.length;
   }
-  // 모든 슬라이드에 remove로 active 클래스 제거를 반복 = 현재 활성화된 슬라이드 비활성화
-  for (let i = 0; i < slides.length; i++) {
-    // classList 클래스 목록에 접근하기 위한 속성
-    slides[i].classList.remove("active");
-  }
-  slides[currentSlide - 1].classList.add("active");
+
+  slides.forEach((slide, index) => {
+    // 현재 슬라이드는 활성화되어 나타나도록 설정
+    if (index + 1 === currentSlide) {
+      slide.classList.add("active");
+      slide.classList.remove("previous", "next");
+    } else if (index + 1 < currentSlide) {
+      // 이전 슬라이드는 왼쪽으로 이동하여 사라지도록 설정
+      slide.classList.remove("active", "next");
+      slide.classList.add("previous");
+    } else {
+      // 다음 슬라이드는 오른쪽으로 이동하여 나타나도록 설정
+      slide.classList.remove("active", "previous");
+      slide.classList.add("next");
+    }
+  });
 }
+
 
 // 이전 슬라이드로 이동하는 함수
 // -= 1 = 현 슬라이드가 2번일 경우 1번 슬라이드로 갈 수 있게 1씩 마이너스하는 역할
