@@ -40,7 +40,7 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 70vh;
+  height: 75vh;
 }
 
 #footer {
@@ -50,7 +50,7 @@
 
 .slider {
   width: 70vw;
-  height: 60vh;
+  height: 75vh;
   overflow: hidden;
   position: relative;
 }
@@ -336,4 +336,5 @@ body {
 #introduce {
   display: flex; /* 가로 배치를 위한 flex 설정 */
   flex-wrap: wrap; /* 화면 크기에 맞게 줄 바꿈 */
+  margin-top: 5vh;
 }
