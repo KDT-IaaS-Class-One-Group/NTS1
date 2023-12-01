@@ -1,4 +1,4 @@
-export function initializeDarkMode() {
+export function darkMode() {
     const body = document.body;
     const titleBox = document.getElementById("titleBox");
     const toggleButton = document.getElementById("darktoggleButton");

@@ -1,4 +1,4 @@
-export function createHamburgerMenu() {
+export function hamburgerMenu() {
     // #main 요소에 추가할 새로운 div 요소 생성
     let newContent = document.createElement("div");
     newContent.innerHTML = `<div class="navbar" id="myNavbar">

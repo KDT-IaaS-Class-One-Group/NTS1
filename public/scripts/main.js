@@ -1,9 +1,9 @@
-import { initializeDarkMode } from "./darkMode.mjs";
-import { createHamburgerMenu } from "./hamburger.js";
+import { darkMode } from "./darkMode.mjs";
+import { hamburgerMenu } from "./hamburger.mjs";
 
 document.addEventListener("DOMContentLoaded", function () {
-  initializeDarkMode();
-  createHamburgerMenu();
+  darkMode();
+  hamburgerMenu();
 });
 
 // 상태 관리 변수이며 현재 슬라이드의 번호를 추적하는 역할
