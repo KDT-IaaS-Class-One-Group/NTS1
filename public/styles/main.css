@@ -333,6 +333,12 @@ body {
   height: 60vh;
 }
 
+.container p{
+  text-align: center; /* 가운데 정렬 */
+  font-size: 1.5rem; /* 2rem의 폰트 크기 */
+  margin: 1rem;
+}
+
 #introduce {
   display: flex; /* 가로 배치를 위한 flex 설정 */
   flex-wrap: wrap; /* 화면 크기에 맞게 줄 바꿈 */

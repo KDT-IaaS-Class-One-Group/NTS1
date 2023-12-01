@@ -132,4 +132,3 @@ function logout() {
   document.getElementById("logoutBtn").style.display = "none";
   document.getElementById("signupBtn").style.display = "block";
 }
-
