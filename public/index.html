@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/main.css">
-  <title>Team NTS</title>
+  <title>NTS</title>
 </head>
 
 <body>
@@ -13,10 +13,10 @@
 
     <div class="header" id="header">
       <span class="menuIcon" onclick="teamToggle()" style="position: absolute; top: 0px; left: 2px;">&#9776;</span>
-      <div id="titleBox">NTS</div>
-      <button id="darktoggleButton">DARK MODE</button>
+      <div id="titleBox">N T S</div>
+      <!-- <button id="darktoggleButton">DARK MODE</button> -->
 
-      <!-- 로그인 폼 -->
+      <!-- 로그인 폼
       <form id="loginForm">
         <label for="userId">ID:</label>
         <input type="text" id="userId" name="userId" required>
@@ -24,62 +24,59 @@
         <input type="password" id="password" name="password" required>
         <button id="loginBtn" type="button" onclick="login()">LOGIN</button>
       </form>
-      <!-- 회원가입 버튼 -->
       <button id="signupBtn" onclick="location.href='signUp.html'">회원가입</button>
-      <!-- 로그아웃 버튼 -->
       <button style="display: none;" id="logoutBtn" onclick="logout()">로그아웃</button>
-      <!-- ID 출력 창 -->
       <div id="loggedInUserId" style="display: none;"></div>
-    </div>
+    </div> -->
 
     <div id="main">
       <!-- 슬라이드 기능 -->
       <div class="slider">
         <div class="slide slide1 active">
-          NTS TEAM
+          TEAM : NTS
         </div>
         <div class="slide slide2">
-          <div><img src="./images/song.png" alt="Slide 2"></div>
+          <div>
+            <a href="https://github.com/S0ngYoungJun" target="_blank"><img src="./images/song.png" alt="Slide 2"></a>
+          </div>
           <div>
             <p>Name : 송영준</p>
-            <p>Github : https://github.com/S0ngYoungJun</p>
-            <p>Gmail : clesaaaaaa@gmail.com</p>
-            <p>Phone Number : 010-3280-2490</p>
+            <p>GitHub : https://github.com/S0ngYoungJun</p>
+            <p>Email : clesaaaaaa@gmail.com</p>
+            <p>Phone : 010-3280-2490</p>
           </div>
         </div>
         <div class="slide slide3">
-          <div><img src="./images/oh.png" alt="Slide 3"></div>
+          <div><a href="https://github.com/seungmin21" target="_blank"><img src="./images/oh.png" alt="Slide 3"></a></div>
           <div>
             <p>Name : 오승민</p>
-            <p>Github : https://github.com/seungmin21</p>
-            <p>Gmail : ohmin2886@gmail.com</p>
-            <p>Phone Number : 010-9238-4062</p>
+            <p>GitHub : https://github.com/seungmin21</p>
+            <p>Email : ohmin2886@gmail.com</p>
+            <p>Phone : 010-9238-4062</p>
           </div>
         </div>
         <div class="slide slide4">
-          <div><img src="./images/lee.png" alt="Slide 4"></div>
+          <div><a href="https://github.com/Yuan12131" target="_blank"><img src="./images/lee.png" alt="Slide 4"></a></div>
           <div>
             <p>Name : 이유안</p>
-            <p>Github : https://github.com/Yuan12131</p>
-            <p>Gmail : dmsdk32123@gmail.com</p>
-            <p>Phone Number : 010-5526-0777</p>
+            <p>GitHub : https://github.com/Yuan12131</p>
+            <p>Email : dmsdk32123@gmail.com</p>
+            <p>Phone : 010-5526-0777</p>
           </div>
         </div>
         <div class="slide slide5">
-          <div><img src="./images/choi.png" alt="Slide 5"></div>
+          <div><a href="https://github.com/ChoiEunCheol" target="_blank"><img src="./images/choi.png" alt="Slide 5"></a></div>
           <div>
             <p>Name : 최은철</p>
-            <p>Github : https://github.com/ChoiEunCheol</p>
-            <p>Gmail : wndqhrgkdlel@gmail.com</p>
-            <p>Phone Number : 010-9062-1887</p>
+            <p>GitHub : https://github.com/ChoiEunCheol</p>
+            <p>Email : wndqhrgkdlel@gmail.com</p>
+            <p>Phone : 010-9062-1887</p>
           </div>
         </div>
         <button class="prev">◀</button>
         <button class="next">▶</button>
       </div>
     </div>
-
-    <div id="footer"></div>
 
   </div>
   <!-- 원인 발견 src가 먼저 실행되기 때문에 충돌 발생 -->
