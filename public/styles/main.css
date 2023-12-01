@@ -40,7 +40,7 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 70vh;
+  height: 75vh;
 }
 
 #footer {
@@ -50,7 +50,7 @@
 
 .slider {
   width: 70vw;
-  height: 60vh;
+  height: 75vh;
   overflow: hidden;
   position: relative;
 }
@@ -323,4 +323,18 @@ body {
   background-color:rgba(192, 186, 179, 0.563);
   width: fit-content;
   margin-top: 5.5vh;
+}
+
+.container {
+  background-color: #808080; /* 회색 배경색 */
+  margin-top: 10px;
+  flex: 1; /* 동일한 너비를 가지도록 설정 */
+  margin: 1.25rem; /* 컨테이너 사이의 오른쪽 여백 */
+  height: 60vh;
+}
+
+#introduce {
+  display: flex; /* 가로 배치를 위한 flex 설정 */
+  flex-wrap: wrap; /* 화면 크기에 맞게 줄 바꿈 */
+  margin-top: 5vh;
 }
