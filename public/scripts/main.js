@@ -1,3 +1,5 @@
+import { initializeDarkMode } from './darkMode.mjs';
+
 // 상태 관리 변수이며 현재 슬라이드의 번호를 추적하는 역할
 let currentSlide = 1;
 
@@ -80,16 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 다크모드 토글버튼 이벤트 추가
 document.addEventListener("DOMContentLoaded", function () {
-  const body = document.body;
-  const toggleButton = document.getElementById("darktoggleButton");
-  const titleBox = document.getElementById("titleBox");
-
-  toggleButton.addEventListener("click", function () {
-    body.classList.toggle("dark-mode");
-    titleBox.style.backgroundColor = body.classList.contains("dark-mode")
-      ? "#394734"
-      : "#568444";
-  });
+  initializeDarkMode();
 });
 
 
