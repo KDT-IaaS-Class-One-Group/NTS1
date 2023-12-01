@@ -1,4 +1,10 @@
-import { initializeDarkMode } from './darkMode.mjs';
+import { initializeDarkMode } from "./darkMode.mjs";
+import { createHamburgerMenu } from "./hamburger.js";
+
+document.addEventListener("DOMContentLoaded", function () {
+  initializeDarkMode();
+  createHamburgerMenu();
+});
 
 // 상태 관리 변수이며 현재 슬라이드의 번호를 추적하는 역할
 let currentSlide = 1;
@@ -29,7 +35,6 @@ function showSlide(number) {
   });
 }
 
-
 // 이전 슬라이드로 이동하는 함수
 // -= 1 = 현 슬라이드가 2번일 경우 1번 슬라이드로 갈 수 있게 1씩 마이너스하는 역할
 function prevSlide() {
@@ -53,64 +58,31 @@ document.querySelector(".next").addEventListener("click", () => {
 
 showSlide(currentSlide);
 
-function teamToggle() {
-  let navbar = document.getElementById("myNavbar");
-  if (navbar.style.width === "250px") {
-    navbar.style.width = "0";
-  } else {
-    navbar.style.width = "250px";
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  // DOM이 로드된 후 실행될 코드
-
-  // #main 요소에 추가할 새로운 div 요소 생성
-  let newContent = document.createElement("div");
-  newContent.innerHTML = `<div class="navbar" id="myNavbar">
-    <span class="menuIcon" onclick="teamToggle()">&#9776;</span>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-</div>`;
-
-  // #main 요소에 새로운 div 요소 추가
-  let mainElement = document.getElementById("header");
-  mainElement.appendChild(newContent);
-});
-
-// 다크모드 토글버튼 이벤트 추가
-document.addEventListener("DOMContentLoaded", function () {
-  initializeDarkMode();
-});
-
-
 let scrolling = false;
 
-    window.addEventListener("scroll", () => {
-      if (!scrolling) {
-        scrolling = true;
+window.addEventListener("scroll", () => {
+  if (!scrolling) {
+    scrolling = true;
 
-        // Calculate the threshold for switching to the introduce section
-        const threshold = window.innerHeight / 3;
+    // Calculate the threshold for switching to the introduce section
+    const threshold = window.innerHeight / 3;
 
-        if (window.scrollY > threshold) {
-          // Add the active class to both main and introduce sections
-          document.getElementById("main").classList.add("active");
-          document.getElementById("introduce").classList.add("active");
-        } else {
-          // Remove the active class from both main and introduce sections
-          document.getElementById("main").classList.remove("active");
-          document.getElementById("introduce").classList.remove("active");
-        }
+    if (window.scrollY > threshold) {
+      // Add the active class to both main and introduce sections
+      document.getElementById("main").classList.add("active");
+      document.getElementById("introduce").classList.add("active");
+    } else {
+      // Remove the active class from both main and introduce sections
+      document.getElementById("main").classList.remove("active");
+      document.getElementById("introduce").classList.remove("active");
+    }
 
-        // Set a timeout to prevent rapid scrolling events
-        setTimeout(() => {
-          scrolling = false;
-        }, 1000);
-      }
-    });
+    // Set a timeout to prevent rapid scrolling events
+    setTimeout(() => {
+      scrolling = false;
+    }, 1000);
+  }
+});
 
 // function login() {
 //   const userId = document.getElementById("userId").value;
@@ -125,14 +97,14 @@ let scrolling = false;
 //   })
 //     .then(response => {
 //       if (response.ok) {
-        
+
 //         document.getElementById("loggedInUserId").innerText = userId + "님 반갑습니다!";
 //         document.getElementById("loggedInUserId").style.display = "block";
 //         document.getElementById("loginForm").style.display = "none";
 //         document.getElementById("logoutBtn").style.display = "block";
 //         document.getElementById("signupBtn").style.display = "none";
 //       } else {
-       
+
 //         console.error('로그인 실패:', response.statusText);
 //       }
 //     })
@@ -141,7 +113,6 @@ let scrolling = false;
 //     });
 // }
 
-
 // function logout() {
 
 //   document.getElementById("loggedInUserId").style.display = "none";
@@ -149,4 +120,3 @@ let scrolling = false;
 //   document.getElementById("logoutBtn").style.display = "none";
 //   document.getElementById("signupBtn").style.display = "block";
 // }
-
