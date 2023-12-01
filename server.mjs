@@ -1,9 +1,15 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import path from 'path';
+import bodyParser from 'body-parser';
+import mysql from 'mysql2';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
-const mysql = require('mysql2');
 const port = 8080;
-const bodyParser = require('body-parser');
 
 app.use(express.static(path.join(__dirname, './public')));
 app.use(bodyParser.json());
