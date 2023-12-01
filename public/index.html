@@ -16,20 +16,20 @@
       <div id="titleBox">NTS</div>
       <button id="darktoggleButton">DARK MODE</button>
 
-      <!-- 로그인 폼 -->
-      <form id="loginForm">
+  
+      <!-- <form id="loginForm">
         <label for="userId">ID:</label>
         <input type="text" id="userId" name="userId" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <button id="loginBtn" type="button" onclick="login()">LOGIN</button>
       </form>
-      <!-- 회원가입 버튼 -->
+      
       <button id="signupBtn" onclick="location.href='signUp.html'">회원가입</button>
-      <!-- 로그아웃 버튼 -->
+      
       <button style="display: none;" id="logoutBtn" onclick="logout()">로그아웃</button>
-      <!-- ID 출력 창 -->
-      <div id="loggedInUserId" style="display: none;"></div>
+      
+      <div id="loggedInUserId" style="display: none;"></div> -->
     </div>
 
     <div id="main">
@@ -39,7 +39,9 @@
           NTS TEAM
         </div>
         <div class="slide slide2">
-          <div><img src="./images/song.png" alt="Slide 2"></div>
+          <div>
+            <a href="https://github.com/S0ngYoungJun" target="_blank"><img src="./images/song.png" alt="Slide 2"></a>
+          </div>
           <div>
             <p>Name : 송영준</p>
             <p>Github : https://github.com/S0ngYoungJun</p>
@@ -48,7 +50,7 @@
           </div>
         </div>
         <div class="slide slide3">
-          <div><img src="./images/oh.png" alt="Slide 3"></div>
+          <div><a href="https://github.com/seungmin21" target="_blank"><img src="./images/oh.png" alt="Slide 3"></a></div>
           <div>
             <p>Name : 오승민</p>
             <p>Github : https://github.com/seungmin21</p>
@@ -57,7 +59,7 @@
           </div>
         </div>
         <div class="slide slide4">
-          <div><img src="./images/lee.png" alt="Slide 4"></div>
+          <div><a href="https://github.com/Yuan12131" target="_blank"><img src="./images/lee.png" alt="Slide 4"></a></div>
           <div>
             <p>Name : 이유안</p>
             <p>Github : https://github.com/Yuan12131</p>
@@ -66,7 +68,7 @@
           </div>
         </div>
         <div class="slide slide5">
-          <div><img src="./images/choi.png" alt="Slide 5"></div>
+          <div><a href="https://github.com/ChoiEunCheol" target="_blank"><img src="./images/choi.png" alt="Slide 5"></a></div>
           <div>
             <p>Name : 최은철</p>
             <p>Github : https://github.com/ChoiEunCheol</p>
@@ -79,7 +81,34 @@
       </div>
     </div>
 
-    <div id="footer"></div>
+    <div id="introduce">
+      <div class="container">
+        <p>송영준 개인 프로젝트 - 티켓예약</p>
+        <a href="https://github.com/S0ngYoungJun/tiketex" target="_blank">
+          <img src="./images/Songproject.png" alt="SongProjectImage">
+        </a>
+      </div>
+      <div class="container">
+        <p>오승민 개인 프로젝트 - 공부</p>
+        <a href="https://github.com/S0ngYoungJun/tiketex" target="_blank">
+          <img src="./images/ohproject.png" alt="OhProjectImage">
+        </a>
+      </div>
+      <div class="container">
+        <p>이유안 개인 프로젝트 - signup-board-chat PAGE</p>
+        <a href="https://github.com/S0ngYoungJun/tiketex" target="_blank">
+          <img src="./images/leeProject.png" alt="LeeProjectImage">
+        </a>
+      </div>
+      <div class="container">
+        <p>최은철 개인 프로젝트 - 길드 매니저 만들기</p>
+        <a href="https://github.com/ChoiEunCheol/guild-manager" target="_blank">
+          <img src="./images/ChoiProject.png" alt="ChoiProjectImage">
+        </a>
+      </div>
+    </div>
+
+
 
   </div>
   <!-- 원인 발견 src가 먼저 실행되기 때문에 충돌 발생 -->
