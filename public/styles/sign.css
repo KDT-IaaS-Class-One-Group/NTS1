@@ -25,3 +25,9 @@ input {
   margin-top: 3px;
   border-radius: 5px;
 }
+
+#checkDuplicated{
+width: 70px;
+height: 25px;
+margin: 5px;
+}
