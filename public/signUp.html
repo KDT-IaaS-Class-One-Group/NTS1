@@ -12,7 +12,8 @@
       <div class="font-size">NTS 회원가입</div>
     </div>
     <div id="sign">
-      <input type="text" id="userId" name="userId" oninput="checkDuplicateId()" placeholder="아이디" required>
+      <input type="text" id="userId" name="userId" placeholder="아이디" required>
+      <button id="checkDuplicated">중복확인</button>
       <input type="password" id="password" placeholder="비밀번호">
       <input type="email" id="email" placeholder="이메일">
       <input type="text" id="name" placeholder="이름">
@@ -20,6 +21,6 @@
       <input type="button" id="signupBtn" value="회원가입" onclick="signup()">
     </div>
   </div>
-  <script type="module" src="scripts/signUp.js"></script>
+  <script type="module" src="scripts/signUp.mjs"></script>
 </body>
 </html>
