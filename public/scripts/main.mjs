@@ -1,3 +1,16 @@
+import { handleScroll } from './scroll.mjs';
+import { darkMode } from "./darkMode.mjs";
+import { hamburgerMenu } from "./hamburger.mjs";
+
+document.addEventListener("DOMContentLoaded", function () {
+  darkMode();
+  hamburgerMenu();
+});
+
+// 스크롤 이벤트에 스크롤처리 함수 연결
+window.addEventListener("scroll", handleScroll);
+
+
 // 상태 관리 변수이며 현재 슬라이드의 번호를 추적하는 역할
 let currentSlide = 1;
 
@@ -91,62 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
       : "#568444";
   });
 });
-
-
-let scrolling = false;
-
-    window.addEventListener("scroll", () => {
-      if (!scrolling) {
-        scrolling = true;
-
-        // Calculate the threshold for switching to the introduce section
-        const threshold = window.innerHeight / 3;
-
-        if (window.scrollY > threshold) {
-          // Add the active class to both main and introduce sections
-          document.getElementById("main").classList.add("active");
-          document.getElementById("introduce").classList.add("active");
-        } else {
-          // Remove the active class from both main and introduce sections
-          document.getElementById("main").classList.remove("active");
-          document.getElementById("introduce").classList.remove("active");
-        }
-
-        // Set a timeout to prevent rapid scrolling events
-        setTimeout(() => {
-          scrolling = false;
-        }, 1000);
-      }
-    });
-
-// function login() {
-//   const userId = document.getElementById("userId").value;
-//   const password = document.getElementById("password").value;
-
-//   fetch('/login', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ userId, password })
-//   })
-//     .then(response => {
-//       if (response.ok) {
-        
-//         document.getElementById("loggedInUserId").innerText = userId + "님 반갑습니다!";
-//         document.getElementById("loggedInUserId").style.display = "block";
-//         document.getElementById("loginForm").style.display = "none";
-//         document.getElementById("logoutBtn").style.display = "block";
-//         document.getElementById("signupBtn").style.display = "none";
-//       } else {
-       
-//         console.error('로그인 실패:', response.statusText);
-//       }
-//     })
-//     .catch(error => {
-//       console.error('데이터 전송 중 오류 발생:', error);
-//     });
-// }
 
 
 // function logout() {
