@@ -73,38 +73,6 @@ function teamToggle() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // DOM이 로드된 후 실행될 코드
-
-  // #main 요소에 추가할 새로운 div 요소 생성
-  let newContent = document.createElement("div");
-  newContent.innerHTML = `<div class="navbar" id="myNavbar">
-    <span class="menuIcon" onclick="teamToggle()">&#9776;</span>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-</div>`;
-
-  // #main 요소에 새로운 div 요소 추가
-  let mainElement = document.getElementById("header");
-  mainElement.appendChild(newContent);
-});
-
-// 다크모드 토글버튼 이벤트 추가
-document.addEventListener("DOMContentLoaded", function () {
-  const body = document.body;
-  const toggleButton = document.getElementById("darktoggleButton");
-  const titleBox = document.getElementById("titleBox");
-
-  toggleButton.addEventListener("click", function () {
-    body.classList.toggle("dark-mode");
-    titleBox.style.backgroundColor = body.classList.contains("dark-mode")
-      ? "#394734"
-      : "#568444";
-  });
-});
-
 
 // function logout() {
 

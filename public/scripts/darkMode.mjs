@@ -7,6 +7,6 @@ export function darkMode() {
       body.classList.toggle("dark-mode");
       titleBox.style.backgroundColor = body.classList.contains("dark-mode")
         ? "#394734"
-        : "#568444";
+        : "#666666";
     });
   }
