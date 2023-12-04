@@ -2,6 +2,11 @@ import { handleScroll } from './scroll.mjs';
 import { darkMode } from "./darkMode.mjs";
 import { hamburgerMenu } from "./hamburger.mjs";
 import { initializeSlideShow, showSlide, getPrevSlide, getNextSlide } from './slide.js';
+import { login } from "./login.mjs";
+import { logout } from "./logout.mjs";
+
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
 
 document.addEventListener("DOMContentLoaded", function () {
   darkMode();
@@ -37,12 +42,10 @@ function teamToggle() {
   }
 }
 
+loginBtn.addEventListener("click", async function () {
+  login();
+});
 
-// function logout() {
-
-//   document.getElementById("loggedInUserId").style.display = "none";
-//   document.getElementById("loginForm").style.display = "block";
-//   document.getElementById("logoutBtn").style.display = "none";
-//   document.getElementById("signupBtn").style.display = "block";
-// }
-
+logoutBtn.addEventListener("click", async function () {
+  logout();
+});
