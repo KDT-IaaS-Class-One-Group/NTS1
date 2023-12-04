@@ -1,10 +1,11 @@
-async function signup() {
-  var userId = document.getElementById('userId').value;
-  var password = document.getElementById('password').value;
-  var email = document.getElementById('email').value;
-  var name = document.getElementById('name').value;
-  var residentNumber = document.getElementById('residentNumber').value;
+const checkDuplicated = document.getElementById("checkDuplicated")
 
+async function signup() {
+  const userId = document.getElementById('userId').value;
+  const password = document.getElementById('password').value;
+  const email = document.getElementById('email').value;
+  const name = document.getElementById('name').value;
+  const residentNumber = document.getElementById('residentNumber').value;
   // 서버에 ID 중복 검사 요청
   const duplicateCheckResponse = await checkDuplicateId(userId);
 
@@ -13,7 +14,7 @@ async function signup() {
     // ID 사용 가능
     console.log('ID 사용 가능');
 
-    var userData = {
+    const userData = {
       userId: userId,
       password: password,
       email: email,
@@ -62,10 +63,30 @@ async function checkDuplicateId(userId) {
       body: JSON.stringify({ userId }),
     });
 
-    return response;
+    if (response.status === 200) {
+      // ID 사용 가능
+      console.log('ID 사용 가능');
+      return true;
+    } else if (response.status === 400) {
+      // 이미 존재하는 ID
+      console.log('이미 존재하는 ID');
+      // TODO: 중복 ID 처리 (예: 사용자에게 알림 메시지 표시)
+      alert('이미 존재하는 ID입니다.');
+      return false;
+    } else {
+      // 다른 상태 코드 처리
+      console.error('ID 중복 검사 오류:', response.status);
+      // TODO: 오류 처리
+      return false;
+    }
   } catch (error) {
     console.error('ID 중복 검사 중 오류 발생:', error);
     // TODO: 오류 처리
-    return null;
+    return false;
   }
 }
+
+checkDuplicated.addEventListener('click', function() {
+  const userId = document.getElementById('userId').value;
+  checkDuplicateId(userId);
+});
