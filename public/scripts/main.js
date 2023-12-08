@@ -1,4 +1,20 @@
+import { handleScroll } from './scroll.js';
+import { darkMode } from "./darkMode.js";
+import { hamburgerMenu } from "./hamburger.js";
 import { initializeSlideShow, showSlide, getPrevSlide, getNextSlide } from './slide.js';
+import { login } from "./login.js";
+import { logout } from "./logout.js";
+
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+document.addEventListener("DOMContentLoaded", function () {
+  darkMode();
+  hamburgerMenu();
+});
+
+// 스크롤 이벤트에 스크롤처리 함수 연결
+window.addEventListener("scroll", handleScroll);
 
 // 슬라이드 쇼 초기화
 initializeSlideShow();
@@ -26,64 +42,13 @@ function teamToggle() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // DOM이 로드된 후 실행될 코드
-
-  // #main 요소에 추가할 새로운 div 요소 생성
-  let newContent = document.createElement("div");
-  newContent.innerHTML = `<div class="navbar" id="myNavbar">
-    <span class="menuIcon" onclick="teamToggle()">&#9776;</span>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-</div>`;
-
-  // #main 요소에 새로운 div 요소 추가
-  let mainElement = document.getElementById("header");
-  mainElement.appendChild(newContent);
+loginBtn.addEventListener("click", async function () {
+  login();
 });
 
-// 다크모드 토글버튼 이벤트 추가
-document.addEventListener("DOMContentLoaded", function () {
-  const body = document.body;
-  const toggleButton = document.getElementById("darktoggleButton");
-  const titleBox = document.getElementById("titleBox");
-
-  toggleButton.addEventListener("click", function () {
-    body.classList.toggle("dark-mode");
-    titleBox.style.backgroundColor = body.classList.contains("dark-mode")
-      ? "#394734"
-      : "#568444";
-  });
+logoutBtn.addEventListener("click", async function () {
+  logout();
 });
-
-
-let scrolling = false;
-
-    window.addEventListener("scroll", () => {
-      if (!scrolling) {
-        scrolling = true;
-
-        // Calculate the threshold for switching to the introduce section
-        const threshold = window.innerHeight / 3;
-
-        if (window.scrollY > threshold) {
-          // Add the active class to both main and introduce sections
-          document.getElementById("main").classList.add("active");
-          document.getElementById("introduce").classList.add("active");
-        } else {
-          // Remove the active class from both main and introduce sections
-          document.getElementById("main").classList.remove("active");
-          document.getElementById("introduce").classList.remove("active");
-        }
-
-        // Set a timeout to prevent rapid scrolling events
-        setTimeout(() => {
-          scrolling = false;
-        }, 1000);
-      }
-    });
 
 // function login() {
 //   const userId = document.getElementById("userId").value;
